@@ -8,6 +8,7 @@ const cors = require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var cardRouter = require('./routes/cards');
+var InfoRouter = require('./routes/information');
 
 var app = express();
 
@@ -23,7 +24,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/cards', cardRouter);
+app.use('/auth', usersRouter);
+app.use('/game', cardRouter); 
+app.use('/info', InfoRouter);
 
 module.exports = app;

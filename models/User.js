@@ -1,38 +1,47 @@
+const bcrypt = require('bcrypt');
+const { v4: uuidv4 } = require('uuid');
+
+
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
         id: {
-            type:DataTypes.INTEGER,
+            type: DataTypes.STRING,
             primaryKey: true,
-            autoIncrement: true,
             allowNull: false,
-           },
-           name: {
+            defaultValue: () => uuidv4().replace(/-/g, ''),
+        },
+        username: {
             type: DataTypes.STRING,
-            allowNull: false
-           },
-           creator: {
+            allowNull: false,
+            unique: true,
+        },
+        email: {
             type: DataTypes.STRING,
-            allowNull: false
-           },
-           popularity: {
-            type: DataTypes.INTEGER,
-            defaultValue: 0 ,
-            readOnly: true 
-           },
-           category: {
-            type: DataTypes.ENUM('mobile', 'pc', 'voucher'),
-            allowNull: false
-           },
-           createdAt: {
-            type:DataTypes.DATE,
-            allowNull: false
-           },
-           updatedAt: {
-            type:DataTypes.DATE,
-            allowNull: false
-           }
+            allowNull: false,
+            unique: true,
+            validate: {
+                isEmail: true,
+            },
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique:true
+        },
+        role: {
+            type: DataTypes.ENUM('user', 'admin'),
+            allowNull: false,
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+        }
     }, {
-        tableName:'user'
+        tableName: 'user'
     });
 
     return User;

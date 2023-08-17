@@ -19,7 +19,7 @@ module.exports = {
        },
        popularity: {
         type: Sequelize.INTEGER,
-        defaultValue: 0 ,
+        defaultValue: 0,
         readOnly: true 
        },
        category: {

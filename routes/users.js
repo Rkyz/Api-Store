@@ -1,11 +1,17 @@
 var express = require('express');
 var router = express.Router();
+const controller = require('../controllers/UserController')
+const userController = require('../controllers/UserController')
+const { authenticateUser } = require('../Middleware/authMiddleware')
 
-const { User } = require('../models');
+router.get('/', controller.allAcc);
+router.post('/register', controller.Register);
+router.post('/login', controller.Login);
+router.get('/protected', authenticateUser, userController.protectedRoute);
+router.get('/usersignin', controller.getUserSignin);
+router.get('/edit/:userId', controller.editUser);
+router.get('/:userId', controller.getUserById);
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send(process.env.APP_NAME);
-});
+
 
 module.exports = router;
