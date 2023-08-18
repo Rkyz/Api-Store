@@ -7,8 +7,9 @@ const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var cardRouter = require('./routes/cards');
+var jokiRouter = require('./routes/joki');
 var InfoRouter = require('./routes/information');
+var HeroRouter = require('./routes/hero');
 
 var app = express();
 
@@ -25,7 +26,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/auth', usersRouter);
-app.use('/game', cardRouter); 
+app.use('/joki', jokiRouter); 
 app.use('/info', InfoRouter);
+app.use('/hero', HeroRouter);
 
 module.exports = app;
