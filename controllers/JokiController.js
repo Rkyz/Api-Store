@@ -11,7 +11,7 @@ const { Op } = require('sequelize');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'public/images');
+    cb(null, 'public/images/joki');
   },
   filename: (req, file, cb) => {
     const uniqueId = uuidv4().replace(/-/g, '');

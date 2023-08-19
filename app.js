@@ -10,6 +10,7 @@ var usersRouter = require('./routes/users');
 var jokiRouter = require('./routes/joki');
 var InfoRouter = require('./routes/information');
 var HeroRouter = require('./routes/hero');
+var GameRouter = require('./routes/game');
 
 var app = express();
 
@@ -29,5 +30,6 @@ app.use('/auth', usersRouter);
 app.use('/joki', jokiRouter); 
 app.use('/info', InfoRouter);
 app.use('/hero', HeroRouter);
+app.use('/game', GameRouter);
 
 module.exports = app;

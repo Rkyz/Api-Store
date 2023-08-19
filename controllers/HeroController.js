@@ -39,10 +39,19 @@ exports.CreateHero = async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 };
+
+exports.AllDataGame = async (req, res) => {
+    const heroes = await Hero.findAll();
+    return res.json({
+        massage: "All Your Hero Game",
+        heroes
+    })  
+}
+
 exports.GetJokiList = async (req, res) => {
     try {
-      const heros = await Hero.findAll(); // Ambil semua data hero
-      const heroNames = heros.map(hero => hero.name); // Ambil hanya nama-nama hero
+      const heros = await Hero.findAll(); 
+      const heroNames = heros.map(hero => hero.name); 
       return heroNames;
     } catch (error) {
       console.error(error);

@@ -4,6 +4,7 @@ const controller = require('../controllers/HeroController')
 
 
 router.get('/', controller.GetJokiList);
+router.get('/all', controller.AllDataGame);
 router.post('/create', controller.CreateHero);
 
 
